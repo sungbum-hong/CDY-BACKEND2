@@ -42,9 +42,7 @@ public class AttendanceService {
     public void checkToday(String username) {
 
         Users users = userRepository.findByUsername(username)
-                .orElseThrow(() ->
-
-                        new UsernameNotFoundException("유저정보를 찾을 수 없습니다."));
+                .orElseThrow(() -> new UsernameNotFoundException("유저정보를 찾을 수 없습니다."));
 
         LocalDate today = LocalDate.now(KST);
         if (attendanceRepository.existsByUser_IdAndCheckDate(users.getId(), today)) {

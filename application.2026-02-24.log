@@ -1,0 +1,1434 @@
+2026-02-24 14:47:21 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 14:47:21 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 28056 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 14:47:21 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 204 ms. Found 0 JDBC repository interfaces.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 14:47:25 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 210 ms. Found 5 JPA repository interfaces.
+2026-02-24 14:47:28 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 14:47:28 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:47:28 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 14:47:28 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 14:47:28 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 7422 ms
+2026-02-24 14:47:29 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 14:47:30 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 14:47:33 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 14:47:33 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 14:47:35 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@611a91df
+2026-02-24 14:47:35 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 14:47:35 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 14:47:39 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 14:47:39 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 14:47:40 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 14:47:46 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 14:47:46 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 14:47:48 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:47:48 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 14:47:48 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 30.456 seconds (process running for 32.846)
+2026-02-24 14:48:54 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 14:48:54 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 14:48:54 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:54 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:55 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:48:56 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1149 ms
+2026-02-24 14:49:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:49:24 ERROR c.c.c.c.e.GlobalExceptionHandler - HV000030: No validator could be found for constraint 'jakarta.validation.constraints.NotBlank' validating type 'com.cdy.cdy.domain.users.entity.UserCategory'. Check configuration for 'userCategory'
+2026-02-24 14:51:34 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 14:51:34 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 9256 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 14:51:34 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 140 ms. Found 0 JDBC repository interfaces.
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:51:37 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 14:51:38 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 158 ms. Found 5 JPA repository interfaces.
+2026-02-24 14:51:40 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 14:51:40 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:51:40 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 14:51:40 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 14:51:40 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 5288 ms
+2026-02-24 14:51:40 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 14:51:41 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 14:51:43 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 14:51:43 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 14:51:44 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e557671
+2026-02-24 14:51:44 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 14:51:44 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 14:51:47 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 14:51:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 14:51:47 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 14:51:51 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 14:51:52 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 14:51:53 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:51:53 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 14:51:53 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 20.924 seconds (process running for 22.098)
+2026-02-24 14:54:00 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 14:54:00 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 14:54:00 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-02-24 14:54:00 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:54:01 DEBUG org.hibernate.SQL - 
+    select
+        case 
+            when count(u1_0.id)>0 
+                then true 
+            else false 
+    end 
+from
+    users u1_0 
+where
+    u1_0.username=?
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [teo]
+2026-02-24 14:54:01 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (description, is_deleted, nickname, password, profile_image_key, role, user_category, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [teo]
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [$2a$10$xl/bT9GGdctkKKxEfG9fke/rIFPc6NKSre4qekFftL4T70SdKkhM.]
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:VARCHAR) <- [null]
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:ENUM) <- [USER]
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:ENUM) <- [null]
+2026-02-24 14:54:01 TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:VARCHAR) <- [teo]
+2026-02-24 14:56:13 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 14:56:13 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 12160 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 14:56:13 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 182 ms. Found 0 JDBC repository interfaces.
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:56:16 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 14:56:17 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 170 ms. Found 5 JPA repository interfaces.
+2026-02-24 14:56:19 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 14:56:19 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:56:19 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 14:56:19 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 14:56:19 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 5574 ms
+2026-02-24 14:56:20 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 14:56:20 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 14:56:22 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 14:56:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 14:56:23 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3cb376a3
+2026-02-24 14:56:23 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 14:56:23 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 14:56:27 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 14:56:27 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 14:56:27 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 14:56:32 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 14:56:32 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 14:56:34 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:56:34 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 14:56:34 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 22.304 seconds (process running for 23.479)
+2026-02-24 14:56:34 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 14:56:34 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 14:56:34 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-02-24 14:56:34 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:34 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:34 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:34 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:34 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:34 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:35 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:35 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:35 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:56:36 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1058 ms
+2026-02-24 14:57:36 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 14:57:36 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 20672 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 14:57:36 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 192 ms. Found 0 JDBC repository interfaces.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 14:57:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 173 ms. Found 5 JPA repository interfaces.
+2026-02-24 14:57:41 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 14:57:41 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:57:41 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 14:57:41 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 14:57:42 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 5505 ms
+2026-02-24 14:57:42 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 14:57:42 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 14:57:44 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 14:57:44 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 14:57:45 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d658aa8
+2026-02-24 14:57:45 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 14:57:45 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 14:57:48 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 14:57:48 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 14:57:49 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 14:57:53 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 14:57:53 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 14:57:55 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 14:57:55 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 14:57:55 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 21.246 seconds (process running for 22.544)
+2026-02-24 14:58:13 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 14:58:13 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 14:58:13 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-02-24 14:58:13 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:13 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:13 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:13 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:13 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:13 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:14 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:14 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:14 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:15 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1152 ms
+2026-02-24 14:58:22 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:22 DEBUG org.hibernate.SQL - 
+    select
+        case 
+            when count(u1_0.id)>0 
+                then true 
+            else false 
+    end 
+from
+    users u1_0 
+where
+    u1_0.username=?
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 14:58:22 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (description, is_deleted, nickname, password, profile_image_key, role, user_category, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [test]
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [$2a$10$5qmUEWBJKSpskHmuUPOSBekDKdzxXaLFLueCFguW4xHuB2sBRJLma]
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:VARCHAR) <- [null]
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:ENUM) <- [USER]
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:ENUM) <- [null]
+2026-02-24 14:58:22 TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 14:58:25 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:25 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 14:58:25 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 14:58:37 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:58:37 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 14:58:37 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 14:58:38 ERROR c.c.c.c.e.GlobalExceptionHandler - Cannot invoke "com.cdy.cdy.domain.users.entity.UserCategory.toString()" because the return value of "com.cdy.cdy.domain.users.entity.Users.getUserCategory()" is null
+2026-02-24 14:59:37 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 14:59:37 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 14:59:37 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 15:00:16 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 15:00:16 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 15:00:16 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 17:38:47 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 17:38:47 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 36016 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 17:38:47 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:38:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 144 ms. Found 0 JDBC repository interfaces.
+2026-02-24 17:38:50 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:38:50 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 17:38:50 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 170 ms. Found 5 JPA repository interfaces.
+2026-02-24 17:38:52 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 17:38:52 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:38:52 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 17:38:52 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 17:38:52 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 5043 ms
+2026-02-24 17:38:52 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 17:38:53 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 17:38:55 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 17:38:55 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 17:38:56 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@66a50c93
+2026-02-24 17:38:56 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 17:38:57 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 17:39:00 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 17:39:00 DEBUG org.hibernate.SQL - 
+    alter table users 
+       add column name varchar(255) not null
+2026-02-24 17:39:01 DEBUG org.hibernate.SQL - 
+    alter table users 
+       add column phone_number varchar(255) not null
+2026-02-24 17:39:01 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 17:39:01 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 17:39:06 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 17:39:06 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 17:39:08 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:39:09 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 17:39:09 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 24.068 seconds (process running for 25.408)
+2026-02-24 17:39:30 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 17:39:30 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 17:39:30 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:31 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:39:32 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1226 ms
+2026-02-24 17:45:50 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 17:45:50 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 27544 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 17:45:50 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 145 ms. Found 0 JDBC repository interfaces.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 17:45:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 138 ms. Found 5 JPA repository interfaces.
+2026-02-24 17:45:54 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 17:45:54 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:45:54 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 17:45:54 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 17:45:55 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4411 ms
+2026-02-24 17:45:55 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 17:45:55 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 17:45:57 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 17:45:57 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 17:45:58 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37a939bc
+2026-02-24 17:45:58 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 17:45:58 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 17:46:01 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 17:46:01 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 17:46:01 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 17:46:05 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 17:46:05 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 17:46:06 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:46:06 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 17:46:06 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 18.217 seconds (process running for 19.686)
+2026-02-24 17:47:11 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 17:47:11 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 17:47:11 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2026-02-24 17:47:11 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:13 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1258 ms
+2026-02-24 17:47:19 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:19 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (description, is_deleted, name, nickname, password, phone_number, profile_image_key, role, user_category, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [admin]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [null]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:VARCHAR) <- [1234567]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [01012345678]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [null]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:ENUM) <- [ADMIN]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:ENUM) <- [null]
+2026-02-24 17:47:19 TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:47:52 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:47:53 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:47:53 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:47:53 WARN  o.s.s.c.bcrypt.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2026-02-24 17:47:53 WARN  c.c.c.c.e.GlobalExceptionHandler - 비밀번호가 틀렸습니다.
+2026-02-24 17:48:15 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:48:15 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:48:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:48:15 WARN  o.s.s.c.bcrypt.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2026-02-24 17:48:15 WARN  c.c.c.c.e.GlobalExceptionHandler - 비밀번호가 틀렸습니다.
+2026-02-24 17:49:51 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 17:49:51 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 34748 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 17:49:51 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 196 ms. Found 0 JDBC repository interfaces.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 17:49:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 193 ms. Found 5 JPA repository interfaces.
+2026-02-24 17:49:56 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 17:49:56 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:49:56 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 17:49:56 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 17:49:57 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 5436 ms
+2026-02-24 17:49:57 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 17:49:57 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 17:49:59 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 17:49:59 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 17:50:00 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@122ea8dc
+2026-02-24 17:50:00 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 17:50:00 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 17:50:03 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 17:50:03 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 17:50:04 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 17:50:08 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 17:50:09 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 17:50:11 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:50:11 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 17:50:11 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 22.012 seconds (process running for 23.515)
+2026-02-24 17:50:19 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 17:50:19 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 17:50:19 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-02-24 17:50:20 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:50:20 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:50:20 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:50:20 WARN  c.c.c.c.e.GlobalExceptionHandler - 존재하지 않는 아이디
+2026-02-24 17:50:28 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:50:29 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (description, is_deleted, name, nickname, password, phone_number, profile_image_key, role, user_category, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [admin]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [null]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:VARCHAR) <- [$2a$10$tK5TbB5/WBHCwpMA1K6EFufxAbyvlqeiWj42K6xPYJBldRXCZJ1Lu]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [01012345678]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [null]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:ENUM) <- [ADMIN]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:ENUM) <- [null]
+2026-02-24 17:50:29 TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:50:47 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:50:47 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:50:47 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:52:15 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:52:15 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:52:15 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 17:52:15 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (description, is_deleted, name, nickname, password, phone_number, profile_image_key, role, user_category, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [null]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:VARCHAR) <- [$2a$10$JNB/PqUHdN2MeKIUtooc2.C/Zg3A8rLYY1OXtKm8ZMQU5XB/e2FEG]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [null]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [null]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:ENUM) <- [USER]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:ENUM) <- [DESIGN]
+2026-02-24 17:52:15 TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 17:52:16 WARN  org.hibernate.orm.jdbc.error - HHH000247: ErrorCode: 1048, SQLState: 23000
+2026-02-24 17:52:16 WARN  org.hibernate.orm.jdbc.error - Column 'name' cannot be null
+2026-02-24 17:52:16 ERROR c.c.c.c.e.GlobalExceptionHandler - could not execute statement [Column 'name' cannot be null] [insert into users (description,is_deleted,name,nickname,password,phone_number,profile_image_key,role,user_category,username) values (?,?,?,?,?,?,?,?,?,?)]; SQL [insert into users (description,is_deleted,name,nickname,password,phone_number,profile_image_key,role,user_category,username) values (?,?,?,?,?,?,?,?,?,?)]; constraint [name]
+2026-02-24 17:52:56 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 17:52:56 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 35088 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 17:52:56 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 149 ms. Found 0 JDBC repository interfaces.
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:52:58 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 17:52:59 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 151 ms. Found 5 JPA repository interfaces.
+2026-02-24 17:53:00 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 17:53:00 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:53:00 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 17:53:00 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 17:53:00 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4249 ms
+2026-02-24 17:53:01 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 17:53:01 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 17:53:02 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 17:53:02 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 17:53:03 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37a939bc
+2026-02-24 17:53:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 17:53:03 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 17:53:06 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 17:53:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 17:53:06 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 17:53:10 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 17:53:10 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 17:53:11 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:53:12 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 17:53:12 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 17.722 seconds (process running for 18.981)
+2026-02-24 17:53:24 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 17:53:24 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 17:53:24 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:25 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:26 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1251 ms
+2026-02-24 17:53:30 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:30 ERROR c.c.c.c.e.GlobalExceptionHandler - Cannot invoke "org.springframework.security.core.Authentication.getName()" because "authentication" is null
+2026-02-24 17:53:46 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:53:47 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:53:47 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:54:09 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:54:09 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:54:09 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 17:54:09 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (description, is_deleted, name, nickname, password, phone_number, profile_image_key, role, user_category, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [관리자]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [null]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:VARCHAR) <- [$2a$10$EI.ICOTg9rEi5eCq8qPMouxCcghia2UQPjyu7Ixw2a4327H.Q0K5K]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [01012345678]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [null]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:ENUM) <- [USER]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:ENUM) <- [DESIGN]
+2026-02-24 17:54:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 17:54:45 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:54:45 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [admin@codiyoung.com]
+2026-02-24 17:54:45 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:54:45 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (description, is_deleted, name, nickname, password, phone_number, profile_image_key, role, user_category, username) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [관리자]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [null]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:VARCHAR) <- [$2a$10$lUXdGyOYIUcdxHFDIWHQQ.vBjZhAle7cVgQE/8yXKP0607mTasK76]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [01012345678]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [null]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:ENUM) <- [USER]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:ENUM) <- [DESIGN]
+2026-02-24 17:54:45 TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:VARCHAR) <- [test]
+2026-02-24 17:55:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:55:24 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:55:24 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:55:44 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:55:44 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:55:44 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        study
+        (content, created_at, is_deleted, title, updated_at, user_id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [내용g]
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:TIMESTAMP) <- [2026-02-24T17:55:44.784607700]
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BOOLEAN) <- [false]
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [스터디글제목]
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:TIMESTAMP) <- [2026-02-24T17:55:44.784607700]
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:BIGINT) <- [7]
+2026-02-24 17:55:44 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        study_image
+        (imagekey, sort_order, study_id) 
+    values
+        (?, ?, ?)
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [string]
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+2026-02-24 17:55:44 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [9]
+2026-02-24 17:55:53 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:55:53 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:55:53 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:55:53 DEBUG org.hibernate.SQL - 
+    select
+        count(s1_0.id) 
+    from
+        study s1_0 
+    where
+        s1_0.user_id=? 
+        and s1_0.is_deleted=false
+2026-02-24 17:55:53 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+2026-02-24 17:55:53 WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-24 17:56:14 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:56:14 DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.content,
+        s1_0.created_at,
+        s1_0.is_deleted,
+        s1_0.title,
+        s1_0.updated_at,
+        s1_0.user_id 
+    from
+        study s1_0 
+    where
+        s1_0.id=?
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [9]
+2026-02-24 17:56:14 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:56:14 DEBUG org.hibernate.SQL - 
+    delete si1_0 
+    from
+        study_image si1_0 
+    where
+        si1_0.study_id=?
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [9]
+2026-02-24 17:56:14 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        study_image
+        (imagekey, sort_order, study_id) 
+    values
+        (?, ?, ?)
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [string12]
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [9]
+2026-02-24 17:56:14 DEBUG org.hibernate.SQL - 
+    update
+        study 
+    set
+        content=?,
+        is_deleted=?,
+        title=?,
+        updated_at=?,
+        user_id=? 
+    where
+        id=?
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [수정된내용]
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BOOLEAN) <- [false]
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [수정된제목]
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:TIMESTAMP) <- [2026-02-24T17:56:14.590074400]
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:BIGINT) <- [7]
+2026-02-24 17:56:14 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:BIGINT) <- [9]
+2026-02-24 17:56:24 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:56:24 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:56:24 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:56:24 DEBUG org.hibernate.SQL - 
+    select
+        count(s1_0.id) 
+    from
+        study s1_0 
+    where
+        s1_0.user_id=? 
+        and s1_0.is_deleted=false
+2026-02-24 17:56:24 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+2026-02-24 17:56:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:56:58 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:56:58 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:56:58 DEBUG org.hibernate.SQL - 
+    select
+        da1_0.id 
+    from
+        daily_attendance da1_0 
+    where
+        da1_0.user_id=? 
+        and da1_0.check_date=? 
+    limit
+        ?
+2026-02-24 17:56:58 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+2026-02-24 17:56:58 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2026-02-24]
+2026-02-24 17:56:58 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+2026-02-24 17:56:58 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        daily_attendance
+        (check_date, checked_at, user_id) 
+    values
+        (?, ?, ?)
+2026-02-24 17:56:58 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DATE) <- [2026-02-24]
+2026-02-24 17:56:58 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:TIMESTAMP) <- [2026-02-24T17:56:58.855593500]
+2026-02-24 17:56:58 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [7]
+2026-02-24 17:57:00 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:57:00 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:57:00 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:57:00 DEBUG org.hibernate.SQL - 
+    select
+        da1_0.id 
+    from
+        daily_attendance da1_0 
+    where
+        da1_0.user_id=? 
+        and da1_0.check_date=? 
+    limit
+        ?
+2026-02-24 17:57:00 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+2026-02-24 17:57:00 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2026-02-24]
+2026-02-24 17:57:00 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+2026-02-24 17:57:00 WARN  c.c.c.c.e.GlobalExceptionHandler - 이미 출석체크를 등록하였습니다.
+2026-02-24 17:57:09 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:57:12 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:57:13 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:31 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-24 17:58:31 INFO  com.cdy.cdy.CdyApplication - Starting CdyApplication using Java 21.0.9 with PID 32984 (C:\Users\home\Desktop\develope\backend\CDY-BACKEND2\build\classes\java\main started by home in C:\Users\home\Desktop\develope\backend\CDY-BACKEND2)
+2026-02-24 17:58:31 INFO  com.cdy.cdy.CdyApplication - The following 1 profile is active: "local"
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.attendance.repository.AttendanceRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyImageRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.study.repository.StudyRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.domain.users.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.cdy.cdy.security.jwt.RefreshRepositoryJPA; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 150 ms. Found 0 JDBC repository interfaces.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-24 17:58:34 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 141 ms. Found 5 JPA repository interfaces.
+2026-02-24 17:58:36 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-24 17:58:36 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:58:36 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-24 17:58:36 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-24 17:58:36 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4489 ms
+2026-02-24 17:58:36 INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-24 17:58:37 INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-02-24 17:58:38 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-24 17:58:38 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-24 17:58:39 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37a939bc
+2026-02-24 17:58:39 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-24 17:58:39 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3307/cdy]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.44
+	Default catalog/schema: cdy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-24 17:58:42 INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-24 17:58:42 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-24 17:58:42 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-24 17:58:46 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-24 17:58:46 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userService
+2026-02-24 17:58:48 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-24 17:58:48 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-24 17:58:48 INFO  com.cdy.cdy.CdyApplication - Started CdyApplication in 18.75 seconds (process running for 20.165)
+2026-02-24 17:58:58 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-24 17:58:58 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-24 17:58:58 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:58 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:58:59 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:59:00 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1195 ms
+2026-02-24 17:59:26 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:59:27 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:59:27 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:59:35 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:59:35 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:59:35 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:59:35 DEBUG org.hibernate.SQL - 
+    select
+        count(s1_0.id) 
+    from
+        study s1_0 
+    where
+        s1_0.user_id=? 
+        and s1_0.is_deleted=false
+2026-02-24 17:59:35 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+2026-02-24 17:59:35 WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-24 17:59:51 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:59:51 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:59:51 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:59:52 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        study
+        (content, created_at, is_deleted, title, updated_at, user_id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [작성글두번째]
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:TIMESTAMP) <- [2026-02-24T17:59:51.960968400]
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BOOLEAN) <- [false]
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:VARCHAR) <- [작성글두번째]
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:TIMESTAMP) <- [2026-02-24T17:59:51.960968400]
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:BIGINT) <- [7]
+2026-02-24 17:59:52 DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        study_image
+        (imagekey, sort_order, study_id) 
+    values
+        (?, ?, ?)
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [string]
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+2026-02-24 17:59:52 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [10]
+2026-02-24 17:59:57 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 17:59:57 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 17:59:57 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 17:59:57 DEBUG org.hibernate.SQL - 
+    select
+        count(s1_0.id) 
+    from
+        study s1_0 
+    where
+        s1_0.user_id=? 
+        and s1_0.is_deleted=false
+2026-02-24 17:59:57 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+2026-02-24 18:00:09 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 18:00:09 DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.content,
+        s1_0.created_at,
+        s1_0.is_deleted,
+        s1_0.title,
+        s1_0.updated_at,
+        s1_0.user_id 
+    from
+        study s1_0 
+    where
+        s1_0.id=?
+2026-02-24 18:00:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [9]
+2026-02-24 18:00:09 DEBUG org.hibernate.SQL - 
+    select
+        si1_0.id,
+        si1_0.imagekey,
+        si1_0.sort_order,
+        si1_0.study_id 
+    from
+        study_image si1_0 
+    where
+        si1_0.study_id=?
+2026-02-24 18:00:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [9]
+2026-02-24 18:00:33 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 18:00:33 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 18:00:33 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [test]
+2026-02-24 18:00:33 DEBUG org.hibernate.SQL - 
+    select
+        da1_0.id 
+    from
+        daily_attendance da1_0 
+    where
+        da1_0.user_id=? 
+        and da1_0.check_date=? 
+    limit
+        ?
+2026-02-24 18:00:33 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+2026-02-24 18:00:33 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2026-02-24]
+2026-02-24 18:00:33 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+2026-02-24 18:00:59 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 18:00:59 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 18:00:59 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 18:01:09 INFO  com.cdy.cdy.security.jwt.JWTFilter - jwt필터 호출
+2026-02-24 18:01:09 DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.description,
+        u1_0.is_deleted,
+        u1_0.name,
+        u1_0.nickname,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.profile_image_key,
+        u1_0.role,
+        u1_0.user_category,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-02-24 18:01:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [codiyoung@codiyoung.com]
+2026-02-24 18:01:09 DEBUG org.hibernate.SQL - 
+    select
+        da1_0.id 
+    from
+        daily_attendance da1_0 
+    where
+        da1_0.user_id=? 
+        and da1_0.check_date=? 
+    limit
+        ?
+2026-02-24 18:01:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [6]
+2026-02-24 18:01:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2026-02-24]
+2026-02-24 18:01:09 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]

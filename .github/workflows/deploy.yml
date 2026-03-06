@@ -1,0 +1,87 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Github Repository에 올린 파일들 불러오기
+        uses: actions/checkout@v4
+
+
+      - name: graldew에 실행 권한 부여
+        run: chmod +x gradlew
+
+      - name: JDK 17버전 설치
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: env 만들기
+        run: |
+          echo "${{ secrets.ENV }}" > .env
+
+      - name: 테스트 및 빌드하기
+        run: ./gradlew clean build -x test
+
+
+      - name: env 서버로 전송
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          source: ".env"
+          target: "/home/ubuntu/app"
+
+
+      - name: AWS credentials 설정 (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::396913706736:role/github-actions-ecr-role
+          aws-region: ap-northeast-2
+
+      - name: ECR 로그인
+        uses: aws-actions/amazon-ecr-login@v2
+        id: login-ecr
+
+      - name: Docker 이미지 생성
+        run: docker build -t localhub .
+
+
+      - name: Docker 이미지에 Tag 붙이기
+        run: docker tag localhub ${{ steps.login-ecr.outputs.registry }}/localhub:latest
+
+
+      - name: Docker 이미지 ECR로 Push
+        run: docker push ${{ steps.login-ecr.outputs.registry }}/localhub:latest
+
+      # 8. EC2에 접속 후 jar 실행
+      - name: SSH로 EC2에 접속하기
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}          # EC2 퍼블릭 IP (Secrets에 저장한 값)
+          username: ${{ secrets.USERNAME }}  # EC2 접속 유저 (ex: ubuntu)
+          key: ${{ secrets.PRIVATE_KEY }}    # 개인키 (Secrets에 저장한 값)
+          script_stop: true                      # 중간에 에러 나면 바로 종료
+          # timeout, command_timeout 은 기본값(10분)으로도 충분하면 생략 가능
+
+          script: |
+            aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 396913706736.dkr.ecr.ap-northeast-2.amazonaws.com
+            
+            docker stop localhub || true
+            docker rm -f localhub || true 
+            docker pull ${{ steps.login-ecr.outputs.registry }}/localhub:latest
+            docker run -d --name localhub -p 8080:8080 \
+            -e SPRING_PROFILES_ACTIVE=prod \
+            --env-file /home/ubuntu/app/.env \
+            ${{ steps.login-ecr.outputs.registry }}/localhub:latest

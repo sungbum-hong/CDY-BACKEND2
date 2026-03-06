@@ -80,7 +80,13 @@ public class SecurityConfig {
                         (new CustomLogoutHandler(jwtService, jwtUtil)));
 
         http
-                .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
+                .addFilterAfter(new JWTFilter(jwtUtil), LoginFilter.class);
+
+        http
+                .authorizeHttpRequests((auth) -> auth
+
+                        .requestMatchers("/login").permitAll()
+                );
 
         return http.build();
     }
@@ -89,7 +95,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000","https://www.codiyoung.com/"));
+        configuration.setAllowedOrigins(List.of("http://localhost:5173","https://www.codiyoung.com/"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
