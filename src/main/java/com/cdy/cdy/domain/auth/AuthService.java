@@ -33,7 +33,9 @@ public class AuthService {
         Users users = Users.builder()
                 .username(dto.getUsername())
                 .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .name(dto.getName())
                 .nickname(dto.getNickname())
+                .phoneNumber(dto.getPhoneNumber())
                 .isDeleted(false)
                 .userCategory(dto.getUserCategory())
                 .build();
