@@ -84,7 +84,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/api/v1/auth/**").permitAll()
+                        .requestMatchers("/login", "/jwt/refresh", "/api/v1/auth/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
