@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@Profile("!prod")
 public class AuthService {
 
     private final UserService userService;
