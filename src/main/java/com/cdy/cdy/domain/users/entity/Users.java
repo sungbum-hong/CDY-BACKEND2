@@ -14,10 +14,10 @@ public class Users {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username") // 유저 로그인 아이디(이메일형식)
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "name",nullable = false) //유저의 본명
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "phone_number", nullable = false)
@@ -31,14 +31,14 @@ public class Users {
     @Column(name = "profile_image_key")
     private String profileImageKey;
 
-    @Column(name = "password", nullable = false) //비밀번호
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_category") //유저 공부분야
+    @Column(name = "user_category")
     private UserCategory userCategory;
 
-    @Column(name = "description") // 한줄소개
+    @Column(name = "description")
     private String description;
 
     @Column(name = "nickname", unique = true)
@@ -48,12 +48,14 @@ public class Users {
     @Column(name = "is_deleted", nullable = false)
     private Boolean isDeleted = false;
 
-
-    public void updateProfile(UserRequestDto dto,String encodedPassword) {
-
-            this.description = dto.getDescription();
-            this.userCategory = dto.getUserCategory();
-            this.password = encodedPassword;
+    public void updateProfile(UserRequestDto dto, String encodedPassword) {
+        this.description = dto.getDescription();
+        this.userCategory = dto.getUserCategory();
+        this.password = encodedPassword;
         this.nickname = dto.getNickname();
     }
+
+    public void changePassword(String encodedPassword) {
+        this.password = encodedPassword;
     }
+}

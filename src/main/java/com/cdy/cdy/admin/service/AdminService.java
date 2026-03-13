@@ -1,15 +1,18 @@
 package com.cdy.cdy.admin.service;
 
+import com.cdy.cdy.admin.dto.RequestChangePassword;
 import com.cdy.cdy.admin.dto.ResponseUserList;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import com.cdy.cdy.domain.users.entity.UserRole;
 import com.cdy.cdy.domain.users.entity.Users;
 import com.cdy.cdy.domain.users.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,7 +25,6 @@ public class AdminService {
     private final UserRepository userRepository;
 
     public void createUser(String username, UserRequestDto userRequestDto) {
-
         Users admin = userRepository.findByUsername(username)
                 .orElseThrow(() -> {
                     log.warn("[AdminService] 관리자 조회 실패 - username : {}", username);
@@ -58,5 +60,13 @@ public class AdminService {
                 .filter(u -> !u.getIsDeleted())
                 .map(ResponseUserList::from)
                 .toList();
+    }
+
+    @Transactional
+    public void changePassword(Long userId, RequestChangePassword dto) {
+        Users user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 유저"));
+        user.changePassword(passwordEncoder.encode(dto.getNewPassword()));
+        log.info("[AdminService] 비밀번호 변경 - userId : {}", userId);
     }
 }

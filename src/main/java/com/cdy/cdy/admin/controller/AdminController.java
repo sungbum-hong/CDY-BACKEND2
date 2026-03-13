@@ -1,5 +1,6 @@
 package com.cdy.cdy.admin.controller;
 
+import com.cdy.cdy.admin.dto.RequestChangePassword;
 import com.cdy.cdy.admin.dto.ResponseUserList;
 import com.cdy.cdy.admin.service.AdminService;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
@@ -24,9 +25,7 @@ public class AdminController {
     @Operation(summary = "어드민이 신규 유저 등록")
     @PostMapping("/createUser")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> createUser(
-            Authentication authentication,
-            @RequestBody UserRequestDto dto) {
+    public ResponseEntity<?> createUser(Authentication authentication, @RequestBody UserRequestDto dto) {
         log.info("[Admin] 유저 생성 요청 - admin: {}, targetUsername: {}", authentication.getName(), dto.getUsername());
         adminService.createUser(authentication.getName(), dto);
         return ResponseEntity.ok("회원가입 완료");
@@ -37,5 +36,14 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<ResponseUserList>> getUsers() {
         return ResponseEntity.ok(adminService.getUsers());
+    }
+
+    @Operation(summary = "유저 비밀번호 변경")
+    @PutMapping("/users/{userId}/password")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> changePassword(@PathVariable Long userId,
+                                            @RequestBody RequestChangePassword dto) {
+        adminService.changePassword(userId, dto);
+        return ResponseEntity.ok("비밀번호가 변경됐습니다.");
     }
 }
