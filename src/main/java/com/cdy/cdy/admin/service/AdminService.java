@@ -1,5 +1,6 @@
 package com.cdy.cdy.admin.service;
 
+import com.cdy.cdy.admin.dto.ResponseUserList;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import com.cdy.cdy.domain.users.entity.UserRole;
 import com.cdy.cdy.domain.users.entity.Users;
@@ -10,27 +11,26 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class AdminService {
 
-
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-    //관리자가 회원가입시키는 로직
-    public void createUser(String username,UserRequestDto userRequestDto) {
 
+    public void createUser(String username, UserRequestDto userRequestDto) {
 
         Users admin = userRepository.findByUsername(username)
                 .orElseThrow(() -> {
                     log.warn("[AdminService] 관리자 조회 실패 - username : {}", username);
-                   throw new UsernameNotFoundException("존재하지 않는 유저");
+                    throw new UsernameNotFoundException("존재하지 않는 유저");
                 });
 
-
         if (!admin.getRole().equals(UserRole.ADMIN)) {
-            log.warn("[AdminService] 관리자 권한 실패 - username : {}",username);
+            log.warn("[AdminService] 관리자 권한 실패 - username : {}", username);
             throw new IllegalArgumentException("관리자만 가능.");
         }
 
@@ -44,11 +44,19 @@ public class AdminService {
                 .name(userRequestDto.getName())
                 .phoneNumber(userRequestDto.getPhoneNumber())
                 .userCategory(userRequestDto.getUserCategory())
+                .nickname(userRequestDto.getNickname())
                 .password(passwordEncoder.encode(userRequestDto.getPassword()))
                 .build();
 
         userRepository.save(users);
-        log.info("[AdminService] 유저 생성 , createdUsername : {} ",username );
+        log.info("[AdminService] 유저 생성 , createdUsername : {}", username);
+    }
 
+    public List<ResponseUserList> getUsers() {
+        return userRepository.findAll()
+                .stream()
+                .filter(u -> !u.getIsDeleted())
+                .map(ResponseUserList::from)
+                .toList();
     }
 }
