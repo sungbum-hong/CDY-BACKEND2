@@ -11,31 +11,31 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users,Long> {
+public interface UserRepository extends JpaRepository<Users, Long> {
 
     @Query("""
-
-    SELECT u 
+    SELECT u
     FROM Users u
     WHERE u.username = :username
-
 """)
     Optional<Users> findByUsername(@Param("username") String username);
 
-
-    /**
-     *  불린값 반환 3가지 케이스
-     *  case when + exists
-     *  case when + count
-     *  exists + native query
-     */
     @Query("""
-SELECT CASE WHEN COUNT(u) > 0 
+SELECT CASE WHEN COUNT(u) > 0
        THEN true ELSE false END
 FROM Users u
 WHERE u.username = :username
 """)
     boolean existsByUsername(String username);
 
-    List<Users> findAllByUserCategoryAndIsDeletedFalse(UserCategory userCategory);
+    @Query(value = """
+        SELECT u.*
+        FROM users u
+        LEFT JOIN study s ON s.user_id = u.id AND s.is_deleted = 0
+        WHERE u.user_category = :category
+          AND u.is_deleted = 0
+        GROUP BY u.id
+        ORDER BY MAX(s.created_at) DESC
+    """, nativeQuery = true)
+    List<Users> findMembersByCategoryOrderByLatestStudy(@Param("category") String category);
 }

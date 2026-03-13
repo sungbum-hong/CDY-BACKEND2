@@ -169,7 +169,7 @@ public class StudyService {
             default        -> UserCategory.CODING;
         };
 
-        return userRepository.findAllByUserCategoryAndIsDeletedFalse(userCategory)
+        return userRepository.findMembersByCategoryOrderByLatestStudy(userCategory.name())
                 .stream()
                 .map(u -> ResponseMember.builder()
                         .id(u.getId())
