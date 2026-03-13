@@ -7,6 +7,8 @@ import com.cdy.cdy.domain.study.entity.StudyImage;
 import com.cdy.cdy.domain.study.repository.StudyImageRepository;
 import com.cdy.cdy.domain.study.repository.StudyRepository;
 import com.cdy.cdy.domain.study.repository.StudyRepositoryJDBC;
+import com.cdy.cdy.domain.users.dto.ResponseMember;
+import com.cdy.cdy.domain.users.entity.UserCategory;
 import com.cdy.cdy.domain.users.entity.Users;
 import com.cdy.cdy.domain.users.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -14,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -82,12 +83,6 @@ public class StudyService {
         study.setIsDeleted();
     }
 
-    /**
-     *
-     * RequestStudy dto의 StudyImage dto에 기본값 ArrayList를 주입해서
-     * null이 들어오는 상황을 제거,
-     * 빈 리스트로 들어오면 전체 삭제 로직.
-     */
     @Transactional
     public void updateStudy(String username, RequestStudy dto,Long studyId) {
 
@@ -101,40 +96,25 @@ public class StudyService {
             throw new IllegalArgumentException("작성자만 수정할 수 있습니다..");
         }
 
-        //dto값 적용시켜서 엔티티값 변화
         study.update(dto);
-        //레포지에 변경된 값 저장
         studyRepository.save(study);
 
-                //스터디 ID에 해당하는 기존 스터디이미지들 전체 삭제
-            studyImageRepository.deleteAllByStudyId(studyId);
-        //스터디이미지 saveall 저장을 위한 arraylist 초기화
+        studyImageRepository.deleteAllByStudyId(studyId);
         List<StudyImage> studyImageList = new ArrayList<>();
 
-
-        //dto의 이미지 리스트에 맞게 for문으로 dto - > studyimage 엔티티 변환과정
-            for (int i = 0; i < dto.getImageList().size(); i++) {
-                RequestStudyImage requestStudyImage = dto.getImageList().get(i);
-                StudyImage studyImage = StudyImage.builder()
-                        .studyId(studyId)
-                        .sortOrder(requestStudyImage.getSortOrder())
-                        .imageKey(requestStudyImage.getImageKey())
-                        .build();
-                studyImageList.add(studyImage);
-
-            }
-            //위에 for문에서 넣은 studyImagelist를 전체 저장하는 로직
-        studyImageRepository.saveAll(studyImageList);
-
+        for (int i = 0; i < dto.getImageList().size(); i++) {
+            RequestStudyImage requestStudyImage = dto.getImageList().get(i);
+            StudyImage studyImage = StudyImage.builder()
+                    .studyId(studyId)
+                    .sortOrder(requestStudyImage.getSortOrder())
+                    .imageKey(requestStudyImage.getImageKey())
+                    .build();
+            studyImageList.add(studyImage);
         }
-
-    /**
-     * 스터디 단건조회
-     * 스터디 아이디를 파라미터로 받고 해당 스터디 조회
-     */
+        studyImageRepository.saveAll(studyImageList);
+    }
 
     public ResponseStudy findById(Long studyId) {
-
 
         Study study = studyRepository.findById(studyId)
                 .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 스터디"));
@@ -152,7 +132,6 @@ public class StudyService {
                         .build()
         ).toList();
 
-
         ResponseStudy responseStudy = ResponseStudy.builder()
                 .id(studyId)
                 .title(study.getTitle())
@@ -162,14 +141,8 @@ public class StudyService {
                 .updatedAt(study.getUpdatedAt())
                 .build();
 
-
         return responseStudy;
     }
-
-    /**
-     * 작성자의 스텅디 조회 (페이징처리)
-     * 작성자의 프로필사진(imageUrl) , 작성날짜 , 제목,내용, 첫번째사진 반환
-     */
 
     public Page<ResponseStudyListByUser> findByUser(String username, Pageable pageable) {
 
@@ -178,19 +151,33 @@ public class StudyService {
 
         List<ResponseStudyListByUser> studyListByUsers = studyRepositoryJDBC.findByUser(users.getId(), pageable);
 
-
-        studyListByUsers.stream().forEach(dto ->
-                {
-                    dto.setFirstImageUrl(imageUrlResolver.toPresignedUrl(dto.getFirstImageUrl()));
-                    dto.setUserProfileImageUrl(imageUrlResolver.toPresignedUrl(dto.getUserProfileImageUrl()));
-                }
-        );
+        studyListByUsers.stream().forEach(dto -> {
+            dto.setFirstImageUrl(imageUrlResolver.toPresignedUrl(dto.getFirstImageUrl()));
+            dto.setUserProfileImageUrl(imageUrlResolver.toPresignedUrl(dto.getUserProfileImageUrl()));
+        });
 
         Long totalCount = studyRepository.findTotalCountByUserId(users.getId());
 
         return new PageImpl<>(studyListByUsers, pageable, totalCount);
+    }
 
+    // 카테고리별 크루 멤버 목록 조회 (비로그인 공개)
+    public List<ResponseMember> getMembers(String category) {
+        UserCategory userCategory = switch (category.toLowerCase()) {
+            case "design"  -> UserCategory.DESIGN;
+            case "video"   -> UserCategory.EDITING;
+            default        -> UserCategory.CODING;
+        };
 
+        return userRepository.findAllByUserCategoryAndIsDeletedFalse(userCategory)
+                .stream()
+                .map(u -> ResponseMember.builder()
+                        .id(u.getId())
+                        .name(u.getNickname())
+                        .field(userCategory.getDescription())
+                        .bio(u.getDescription())
+                        .avatar(imageUrlResolver.toPresignedUrl(u.getProfileImageKey()))
+                        .build()
+                ).toList();
     }
 }
-

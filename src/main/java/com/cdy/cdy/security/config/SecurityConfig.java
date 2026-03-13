@@ -8,6 +8,7 @@ import com.cdy.cdy.security.jwt.JwtUtil;
 import com.cdy.cdy.security.jwt.LoginFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,15 +32,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-
     private final AuthenticationConfiguration authenticationConfiguration;
-
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
-
     private final JwtService jwtService;
-
     private final JwtUtil jwtUtil;
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -47,51 +43,34 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager
-            (AuthenticationConfiguration configuration) {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) {
         return configuration.getAuthenticationManager();
     }
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-                .csrf((auth) -> auth.disable());
+        http.csrf((auth) -> auth.disable());
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
+        http.httpBasic((auth) -> auth.disable());
+        http.formLogin((auth) -> auth.disable());
 
-        http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()));
+        http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), authenticationSuccessHandler),
+                UsernamePasswordAuthenticationFilter.class);
 
-        http
-                .httpBasic((auth) -> auth.disable());
+        http.logout(logout -> logout.addLogoutHandler(new CustomLogoutHandler(jwtService, jwtUtil)));
 
-        http
-                .formLogin((auth) -> auth.disable());
+        http.addFilterAfter(new JWTFilter(jwtUtil), LoginFilter.class);
 
-
-        // 필터 등록
-        http
-                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), authenticationSuccessHandler),
-                        UsernamePasswordAuthenticationFilter.class);
-
-         http
-                .logout(logout ->
-                logout.addLogoutHandler
-                        (new CustomLogoutHandler(jwtService, jwtUtil)));
-
-        http
-                .addFilterAfter(new JWTFilter(jwtUtil), LoginFilter.class);
-
-        http
-                .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/jwt/refresh", "/api/v1/auth/**").permitAll()
-                        .anyRequest().authenticated()
-                );
+        http.authorizeHttpRequests((auth) -> auth
+                .requestMatchers("/login", "/jwt/refresh", "/api/v1/auth/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/study/members").permitAll()
+                .anyRequest().authenticated()
+        );
 
         return http.build();
     }
 
-    // CORS Bean
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -111,17 +90,10 @@ public class SecurityConfig {
         return source;
     }
 
-    // 권한 계층
     @Bean
     public RoleHierarchy roleHierarchy() {
         return RoleHierarchyImpl.withRolePrefix("ROLE_")
                 .role(UserRole.ADMIN.name()).implies(UserRole.USER.name())
                 .build();
     }
-
 }
-
-
-
-
-

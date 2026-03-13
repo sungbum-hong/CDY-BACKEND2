@@ -1,11 +1,13 @@
 package com.cdy.cdy.domain.users.repository;
 
+import com.cdy.cdy.domain.users.entity.UserCategory;
 import com.cdy.cdy.domain.users.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -35,27 +37,5 @@ WHERE u.username = :username
 """)
     boolean existsByUsername(String username);
 
-//    @Query("""
-//
-//                SELECT
-//                CASE WHEN
-//                EXISTS(
-//                SELECT 1
-//                FROM Users u
-//                WHERE u.username = :username
-//               )
-//                THEN true ELSE false
-//                END
-//                FROM Users x
-//            """)
-//    boolean existsByUsername(@Param("username") String username);
-
-//    @Query(value = """
-//SELECT EXISTS(
-//    SELECT 1
-//    FROM users u
-//    WHERE u.username = :username
-//)
-//""", nativeQuery = true)
-//    boolean existsByUsername(@Param("username") String username);
+    List<Users> findAllByUserCategoryAndIsDeletedFalse(UserCategory userCategory);
 }
