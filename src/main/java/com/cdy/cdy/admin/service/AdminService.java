@@ -1,6 +1,7 @@
 package com.cdy.cdy.admin.service;
 
 import com.cdy.cdy.admin.dto.RequestChangePassword;
+import com.cdy.cdy.admin.dto.RequestPromoteAdmin;
 import com.cdy.cdy.admin.dto.ResponseUserList;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import com.cdy.cdy.domain.users.entity.UserRole;
@@ -68,5 +69,18 @@ public class AdminService {
                 .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 유저"));
         user.changePassword(passwordEncoder.encode(dto.getNewPassword()));
         log.info("[AdminService] 비밀번호 변경 - userId : {}", userId);
+    }
+
+    private static final String BOOTSTRAP_SECRET = "cdy-admin-bootstrap-2026";
+
+    @Transactional
+    public void promoteToAdmin(RequestPromoteAdmin dto) {
+        if (!BOOTSTRAP_SECRET.equals(dto.getSecretKey())) {
+            throw new IllegalArgumentException("잘못된 시크릿 키입니다.");
+        }
+        Users user = userRepository.findByUsername(dto.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 유저"));
+        user.promoteToAdmin();
+        log.info("[AdminService] ADMIN 권한 부여 - username : {}", dto.getUsername());
     }
 }

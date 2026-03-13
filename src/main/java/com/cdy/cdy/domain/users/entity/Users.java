@@ -58,4 +58,8 @@ public class Users {
     public void changePassword(String encodedPassword) {
         this.password = encodedPassword;
     }
+
+    public void promoteToAdmin() {
+        this.role = UserRole.ADMIN;
+    }
 }

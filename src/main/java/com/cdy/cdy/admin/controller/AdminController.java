@@ -1,6 +1,7 @@
 package com.cdy.cdy.admin.controller;
 
 import com.cdy.cdy.admin.dto.RequestChangePassword;
+import com.cdy.cdy.admin.dto.RequestPromoteAdmin;
 import com.cdy.cdy.admin.dto.ResponseUserList;
 import com.cdy.cdy.admin.service.AdminService;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
@@ -45,5 +46,12 @@ public class AdminController {
                                             @RequestBody RequestChangePassword dto) {
         adminService.changePassword(userId, dto);
         return ResponseEntity.ok("비밀번호가 변경됐습니다.");
+    }
+
+    @Operation(summary = "최초 어드민 계정 승격 (부트스트랩)")
+    @PostMapping("/bootstrap")
+    public ResponseEntity<?> bootstrap(@RequestBody RequestPromoteAdmin dto) {
+        adminService.promoteToAdmin(dto);
+        return ResponseEntity.ok("ADMIN 권한이 부여됐습니다.");
     }
 }
