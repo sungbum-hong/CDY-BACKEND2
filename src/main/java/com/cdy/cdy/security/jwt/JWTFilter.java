@@ -30,6 +30,8 @@ public class JWTFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getServletPath();
         String method = request.getMethod();
+        // OPTIONS preflight 요청은 JWT 검증 없이 통과
+        if (HttpMethod.OPTIONS.name().equals(method)) return true;
         return HttpMethod.GET.name().equals(method) && "/api/v1/study/members".equals(path);
     }
 
