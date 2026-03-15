@@ -71,6 +71,15 @@ public class AdminService {
         log.info("[AdminService] 비밀번호 변경 - userId : {}", userId);
     }
 
+    @Transactional
+    public void changeRole(Long userId, String role) {
+        Users user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 유저"));
+        UserRole userRole = UserRole.valueOf(role);
+        user.changeRole(userRole);
+        log.info("[AdminService] 권한 변경 - userId: {}, role: {}", userId, role);
+    }
+
     private static final String BOOTSTRAP_SECRET = "cdy-admin-bootstrap-2026";
 
     @Transactional

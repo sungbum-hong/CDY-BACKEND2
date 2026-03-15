@@ -62,4 +62,8 @@ public class Users {
     public void promoteToAdmin() {
         this.role = UserRole.ADMIN;
     }
+
+    public void changeRole(UserRole role) {
+        this.role = role;
+    }
 }
