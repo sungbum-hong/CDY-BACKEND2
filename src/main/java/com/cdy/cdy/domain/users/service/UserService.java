@@ -27,7 +27,7 @@ public class UserService implements UserDetailsService {
         Users users = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다."));
 
-        if (users.getIsDeleted().equals(true)) {
+        if (Boolean.TRUE.equals(users.getIsDeleted())) {
             throw new UsernameNotFoundException("유저를 찾을 수 없습니다.");
         }
 
@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService {
         Users users = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다."));
 
-        if (users.getIsDeleted().equals(true)) {
+        if (Boolean.TRUE.equals(users.getIsDeleted())) {
             throw new UsernameNotFoundException("유저를 찾을 수 없습니다.");
         }
 

@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,6 +23,15 @@ public class JWTFilter extends OncePerRequestFilter {
 
 
     private final JwtUtil jwtUtil;
+
+    // 인증 없이 접근 가능한 경로는 JWTFilter 자체를 건너뜀
+    // (만료된 토큰이 헤더에 있어도 401을 반환하지 않도록)
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+        String method = request.getMethod();
+        return HttpMethod.GET.name().equals(method) && "/api/v1/study/members".equals(path);
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
