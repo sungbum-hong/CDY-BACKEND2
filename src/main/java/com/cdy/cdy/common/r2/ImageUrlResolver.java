@@ -11,10 +11,8 @@ public class ImageUrlResolver {
 
 
     public String toPresignedUrl(String key) {
-
-        if(key == null || key.isBlank()) return null;
-        return r2StorageService.presignGet(key, 3600).toString();
-
+        if (key == null || key.isBlank()) return null;
+        return r2StorageService.publicUrl(key);
     }
 
 }

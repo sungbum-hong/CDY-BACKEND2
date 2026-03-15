@@ -113,8 +113,13 @@ public class R2StorageService {
     // --------------------------------
 
     public String upload(MultipartFile file) {
+        String key = buildKey(file.getOriginalFilename());
+        uploadByKey(key, file);
+        return publicUrl(key);
+    }
+
+    public String uploadByKey(String key, MultipartFile file) {
         try {
-            String key = buildKey(file.getOriginalFilename());
             PutObjectRequest req = PutObjectRequest.builder()
                     .bucket(props.getBucket())
                     .key(key)

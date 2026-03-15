@@ -68,7 +68,9 @@ public class R2StorageController {
      */
     @PostMapping("/upload")
     public Map<String, String> upload(@RequestParam("file") MultipartFile file) {
-        String url = storageService.upload(file);
-        return Map.of("url", url);
+        String key = storageService.buildKey(file.getOriginalFilename());
+        storageService.uploadByKey(key, file);
+        String url = storageService.publicUrl(key);
+        return Map.of("url", url, "key", key);
     }
 }
