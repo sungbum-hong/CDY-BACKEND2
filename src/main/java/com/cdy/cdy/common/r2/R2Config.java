@@ -60,10 +60,20 @@ public class R2Config {
     /** 서버 시작 시 R2 버킷 CORS 정책 자동 적용 */
     @PostConstruct
     public void applyBucketCors() {
-        try (S3Client client = s3Client()) {
+        S3Client client = S3Client.builder()
+                .credentialsProvider(StaticCredentialsProvider.create(
+                        AwsBasicCredentials.create(p.getAccessKey(), p.getSecretKey())))
+                .region(Region.of(p.getRegion()))
+                .endpointOverride(URI.create(p.getEndpoint()))
+                .serviceConfiguration(S3Configuration.builder()
+                        .pathStyleAccessEnabled(true)
+                        .build())
+                .httpClientBuilder(UrlConnectionHttpClient.builder())
+                .build();
+        try {
             CORSRule corsRule = CORSRule.builder()
-                    .allowedOrigins("https://www.codiyoung.com")
-                    .allowedMethods("GET", "PUT", "POST", "DELETE")
+                    .allowedOrigins("https://www.codiyoung.com", "http://localhost:5173")
+                    .allowedMethods("GET", "PUT", "POST", "DELETE", "HEAD")
                     .allowedHeaders("*")
                     .exposeHeaders("ETag")
                     .maxAgeSeconds(3000)
@@ -79,6 +89,8 @@ public class R2Config {
             System.out.println("[R2] CORS 정책 적용 완료: " + p.getBucket());
         } catch (Exception e) {
             System.err.println("[R2] CORS 적용 실패: " + e.getMessage());
+        } finally {
+            client.close();
         }
     }
 }
