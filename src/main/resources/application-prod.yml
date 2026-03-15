@@ -35,7 +35,7 @@ jwt:
   refreshTokenExpiresIn: 604800000
 storage:
   provider: r2
-  bucket: localhub
+  bucket: ${R2_BUCKET}
   accessKey: ${R2_ACCESS_KEY}
   secretKey: ${R2_SECRET_KEY}
   endpoint: ${R2_ENDPOINT}
