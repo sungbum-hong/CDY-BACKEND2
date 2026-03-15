@@ -1,5 +1,6 @@
 package com.cdy.cdy.domain.users.dto;
 
+import com.cdy.cdy.domain.users.entity.UserRole;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,4 +12,5 @@ public class ResponseMember {
     private String field;
     private String bio;
     private String avatar;
+    private UserRole role;
 }
