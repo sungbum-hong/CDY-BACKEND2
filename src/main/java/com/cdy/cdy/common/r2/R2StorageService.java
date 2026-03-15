@@ -2,6 +2,9 @@ package com.cdy.cdy.common.r2;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
@@ -17,11 +20,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class R2StorageService {
 
-    // application.yml의 storage.* 값(버킷, 엔드포인트, presignSeconds 등)을 들고 있는 객체.
     private final StorageProps props;
-
-    // 실제로 서명을 만들어 주는 AWS SDK의 프리사이너(엔드포인트/자격증명은 R2Config에서 설정).
     private final S3Presigner presigner;
+    private final S3Client s3Client;
 
 
 
@@ -108,7 +109,27 @@ public class R2StorageService {
     }
 
     // --------------------------------
-    // 5) 퍼블릭 버킷용 정적 접근 URL
+    // 5) 서버 사이드 직접 업로드
+    // --------------------------------
+
+    public String upload(MultipartFile file) {
+        try {
+            String key = buildKey(file.getOriginalFilename());
+            PutObjectRequest req = PutObjectRequest.builder()
+                    .bucket(props.getBucket())
+                    .key(key)
+                    .contentType(file.getContentType())
+                    .contentLength(file.getSize())
+                    .build();
+            s3Client.putObject(req, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
+            return publicUrl(key);
+        } catch (Exception e) {
+            throw new RuntimeException("이미지 업로드 실패: " + e.getMessage(), e);
+        }
+    }
+
+    // --------------------------------
+    // 6) 퍼블릭 버킷용 정적 접근 URL
     // --------------------------------
 
     // 버킷을 퍼블릭으로 열어두었다면, 굳이 presign 없이

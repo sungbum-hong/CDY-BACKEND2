@@ -3,6 +3,7 @@ package com.cdy.cdy.common.r2;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URL;
 import java.util.Map;
@@ -59,6 +60,15 @@ public class R2StorageController {
     @GetMapping("/public-url")
     public Map<String, String> getPublicUrl(@RequestParam String key) {
         String url = storageService.publicUrl(key);
+        return Map.of("url", url);
+    }
+
+    /**
+     * 4. 서버 사이드 업로드 (multipart/form-data → R2 → URL 반환)
+     */
+    @PostMapping("/upload")
+    public Map<String, String> upload(@RequestParam("file") MultipartFile file) {
+        String url = storageService.upload(file);
         return Map.of("url", url);
     }
 }
