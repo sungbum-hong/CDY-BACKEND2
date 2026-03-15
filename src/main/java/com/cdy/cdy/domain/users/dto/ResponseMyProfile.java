@@ -25,5 +25,7 @@ public class ResponseMyProfile {
     @Schema(description = "유저 역할 ex ADMIN, USER")
     private String role;
 
+    @Schema(description = "프로필 이미지 URL")
+    private String profileImageUrl;
 
 }

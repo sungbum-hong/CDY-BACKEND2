@@ -57,6 +57,7 @@ public class UserService implements UserDetailsService {
                 .username(users.getUsername())
                 .description(users.getDescription())
                 .role(users.getRole().name())
+                .profileImageUrl(users.getProfileImageUrl())
                 .build();
     }
 
