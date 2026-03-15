@@ -40,4 +40,12 @@ public class UserController {
 
     }
 
+    @Operation(summary = "프로필 이미지 URL 저장")
+    @PutMapping("/profileImageUrl")
+    public ResponseEntity<?> updateProfileImageUrl(Authentication authentication,
+                                                   @RequestBody java.util.Map<String, String> body) {
+        userService.updateProfileImageUrl(authentication.getName(), body.get("imageUrl"));
+        return ResponseEntity.ok("프로필 이미지 URL 저장 완료.");
+    }
+
 }

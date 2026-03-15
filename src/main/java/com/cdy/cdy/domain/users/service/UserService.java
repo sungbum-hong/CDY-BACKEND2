@@ -66,6 +66,13 @@ public class UserService implements UserDetailsService {
      * @param dto
      * 로그인한 유저의 프로필 정보 변경 로직
      */
+    @Transactional
+    public void updateProfileImageUrl(String username, String imageUrl) {
+        Users users = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다."));
+        users.updateProfileImageUrl(imageUrl);
+    }
+
     public void changeMyPage(String username,UserRequestDto dto) {
 
         Users users = userRepository.findByUsername(username)

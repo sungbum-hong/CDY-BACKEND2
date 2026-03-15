@@ -31,6 +31,9 @@ public class Users {
     @Column(name = "profile_image_key")
     private String profileImageKey;
 
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
     @Column(name = "password", nullable = false)
     private String password;
 
@@ -65,5 +68,9 @@ public class Users {
 
     public void changeRole(UserRole role) {
         this.role = role;
+    }
+
+    public void updateProfileImageUrl(String url) {
+        this.profileImageUrl = url;
     }
 }
