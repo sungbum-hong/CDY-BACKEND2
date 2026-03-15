@@ -133,9 +133,9 @@ public class R2StorageService {
     // --------------------------------
 
     // 버킷을 퍼블릭으로 열어두었다면, 굳이 presign 없이
-    // "엔드포인트/버킷/키" 형태의 고정 URL로 접근할 수 있다.
+    // 커스텀 도메인을 통해 고정 URL로 접근할 수 있다.
     public String publicUrl(String key) {
-        // 예: https://<ACCOUNT>.r2.cloudflarestorage.com/<bucket>/<key>
-        return props.getEndpoint() + "/" + props.getBucket() + "/" + key;
+        // 예: https://images.codiyoung.com/uploads/uuid.jpg
+        return "https://images.codiyoung.com/" + key;
     }
 }
