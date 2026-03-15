@@ -56,6 +56,7 @@ public class UserService implements UserDetailsService {
                 .userCategory(users.getUserCategory().toString())
                 .username(users.getUsername())
                 .description(users.getDescription())
+                .role(users.getRole().name())
                 .build();
     }
 

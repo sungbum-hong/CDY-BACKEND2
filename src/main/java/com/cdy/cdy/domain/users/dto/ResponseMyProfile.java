@@ -22,6 +22,8 @@ public class ResponseMyProfile {
     private String description;
     @Schema(description = "닉네임")
     private String nickname;
+    @Schema(description = "유저 역할 ex ADMIN, USER")
+    private String role;
 
 
 }
