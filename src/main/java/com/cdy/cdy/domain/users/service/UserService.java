@@ -83,7 +83,10 @@ public class UserService implements UserDetailsService {
             throw new IllegalArgumentException("본인만 정보를 변경 할 수 있습니다.");
         }
 
-        users.updateProfile(dto, bCryptPasswordEncoder.encode(dto.getPassword()));
+        String encodedPassword = (dto.getPassword() != null && !dto.getPassword().isEmpty())
+                ? bCryptPasswordEncoder.encode(dto.getPassword())
+                : users.getPassword();
+        users.updateProfile(dto, encodedPassword);
         userRepository.save(users);
 
     }
