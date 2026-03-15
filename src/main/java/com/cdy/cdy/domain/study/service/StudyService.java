@@ -176,7 +176,9 @@ public class StudyService {
                         .name(u.getNickname())
                         .field(userCategory.getDescription())
                         .bio(u.getDescription())
-                        .avatar(imageUrlResolver.toPresignedUrl(u.getProfileImageKey()))
+                        .avatar(u.getProfileImageKey() != null
+                                ? imageUrlResolver.toPresignedUrl(u.getProfileImageKey())
+                                : u.getProfileImageUrl())
                         .role(u.getRole())
                         .build()
                 ).toList();
