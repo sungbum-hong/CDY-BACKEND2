@@ -73,4 +73,8 @@ public class Users {
     public void updateProfileImageUrl(String url) {
         this.profileImageUrl = url;
     }
+
+    public void softDelete() {
+        this.isDeleted = true;
+    }
 }

@@ -57,6 +57,14 @@ public class AdminController {
         return ResponseEntity.ok("권한이 변경됐습니다.");
     }
 
+    @Operation(summary = "유저 삭제 (soft delete)")
+    @DeleteMapping("/users/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
+        adminService.deleteUser(userId);
+        return ResponseEntity.ok("유저가 삭제됐습니다.");
+    }
+
     @Operation(summary = "최초 어드민 계정 승격 (부트스트랩)")
     @PostMapping("/bootstrap")
     public ResponseEntity<?> bootstrap(@RequestBody RequestPromoteAdmin dto) {

@@ -80,6 +80,14 @@ public class AdminService {
         log.info("[AdminService] 권한 변경 - userId: {}, role: {}", userId, role);
     }
 
+    @Transactional
+    public void deleteUser(Long userId) {
+        Users user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 유저"));
+        user.softDelete();
+        log.info("[AdminService] 유저 삭제 - userId : {}", userId);
+    }
+
     private static final String BOOTSTRAP_SECRET = "cdy-admin-bootstrap-2026";
 
     @Transactional
