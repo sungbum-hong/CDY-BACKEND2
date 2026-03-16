@@ -99,4 +99,12 @@ public class AdminController {
         applicationService.reject(id);
         return ResponseEntity.ok("거절됐습니다.");
     }
+
+    @Operation(summary = "크루원 신청 삭제")
+    @DeleteMapping("/applications/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> deleteApplication(@PathVariable Long id) {
+        applicationService.delete(id);
+        return ResponseEntity.ok("삭제됐습니다.");
+    }
 }

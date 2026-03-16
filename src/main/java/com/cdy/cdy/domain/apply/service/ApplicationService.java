@@ -31,8 +31,8 @@ public class ApplicationService {
     public void apply(RequestApply dto) {
         Application application = Application.builder()
                 .name(dto.getName())
+                .phone(dto.getPhone())
                 .email(dto.getEmail())
-                .nickname(dto.getNickname())
                 .field(UserCategory.valueOf(dto.getField()))
                 .createdAt(LocalDateTime.now())
                 .build();
@@ -76,5 +76,13 @@ public class ApplicationService {
                 .orElseThrow(() -> new EntityNotFoundException("신청을 찾을 수 없습니다."));
         application.reject();
         log.info("[Apply] 신청 거절 - id: {}", id);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("신청을 찾을 수 없습니다."));
+        applicationRepository.delete(application);
+        log.info("[Apply] 신청 삭제 - id: {}", id);
     }
 }

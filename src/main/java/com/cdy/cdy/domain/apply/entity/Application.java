@@ -20,11 +20,11 @@ public class Application {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "phone", nullable = false)
+    private String phone;
+
     @Column(name = "email", nullable = false)
     private String email;
-
-    @Column(name = "nickname", nullable = false)
-    private String nickname;
 
     @Column(name = "field", nullable = false)
     @Enumerated(EnumType.STRING)
