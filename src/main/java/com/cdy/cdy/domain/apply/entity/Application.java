@@ -26,6 +26,9 @@ public class Application {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "nickname", nullable = false)
+    private String nickname;
+
     @Column(name = "field", nullable = false)
     @Enumerated(EnumType.STRING)
     private UserCategory field;

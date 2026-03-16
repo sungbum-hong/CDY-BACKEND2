@@ -11,6 +11,7 @@ public class ResponseApplication {
     private String name;
     private String phone;
     private String email;
+    private String nickname;
     private String field;
     private String createdAt;
 
@@ -20,6 +21,7 @@ public class ResponseApplication {
                 .name(a.getName())
                 .phone(a.getPhone())
                 .email(a.getEmail())
+                .nickname(a.getNickname())
                 .field(a.getField().getDescription())
                 .createdAt(a.getCreatedAt() != null ? a.getCreatedAt().toString() : "")
                 .build();

@@ -9,5 +9,6 @@ public class RequestApply {
     private String name;
     private String phone;
     private String email;
+    private String nickname;
     private String field; // "CODING" | "DESIGN" | "EDITING"
 }

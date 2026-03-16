@@ -33,6 +33,7 @@ public class ApplicationService {
                 .name(dto.getName())
                 .phone(dto.getPhone())
                 .email(dto.getEmail())
+                .nickname(dto.getNickname())
                 .field(UserCategory.valueOf(dto.getField()))
                 .createdAt(LocalDateTime.now())
                 .build();
