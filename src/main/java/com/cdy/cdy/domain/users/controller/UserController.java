@@ -48,4 +48,11 @@ public class UserController {
         return ResponseEntity.ok("프로필 이미지 URL 저장 완료.");
     }
 
+    @Operation(summary = "개인정보 동의", description = "로그인한 유저의 terms_agreed를 true로 업데이트")
+    @PutMapping("/terms-agree")
+    public ResponseEntity<?> agreeTerms(Authentication authentication) {
+        userService.agreeTerms(authentication.getName());
+        return ResponseEntity.ok("개인정보 동의 완료.");
+    }
+
 }

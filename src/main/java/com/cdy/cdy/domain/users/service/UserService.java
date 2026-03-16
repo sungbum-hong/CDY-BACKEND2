@@ -74,6 +74,13 @@ public class UserService implements UserDetailsService {
         users.updateProfileImageUrl(imageUrl);
     }
 
+    @Transactional
+    public void agreeTerms(String username) {
+        Users users = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다."));
+        users.agreeTerms();
+    }
+
     public void changeMyPage(String username,UserRequestDto dto) {
 
         Users users = userRepository.findByUsername(username)

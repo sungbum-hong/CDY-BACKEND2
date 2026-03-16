@@ -51,6 +51,14 @@ public class Users {
     @Column(name = "is_deleted", nullable = false)
     private Boolean isDeleted = false;
 
+    @Builder.Default
+    @Column(name = "terms_agreed", nullable = false)
+    private Boolean termsAgreed = false;
+
+    public void agreeTerms() {
+        this.termsAgreed = true;
+    }
+
     public void updateProfile(UserRequestDto dto, String encodedPassword) {
         this.description = dto.getDescription();
         this.userCategory = dto.getUserCategory();

@@ -1,5 +1,7 @@
 package com.cdy.cdy.security.handler;
 
+import com.cdy.cdy.domain.users.entity.Users;
+import com.cdy.cdy.domain.users.repository.UserRepository;
 import com.cdy.cdy.security.jwt.JwtService;
 import com.cdy.cdy.security.jwt.JwtUtil;
 import jakarta.servlet.ServletException;
@@ -21,6 +23,7 @@ import java.io.IOException;
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     private final JwtService jwtService;
     private final JwtUtil jwtUtil;
+    private final UserRepository userRepository;
 
 
     @Override
@@ -37,20 +40,24 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         String accessToken = jwtUtil.createJWT(username, role, true);
         String refreshToken = jwtUtil.createJWT(username, role, false);
 
-
         // refresh save
         jwtService.addRefresh(username, refreshToken);
 
+        // terms_agreed 조회
+        boolean termsAgreed = userRepository.findByUsername(username)
+                .map(Users::getTermsAgreed)
+                .map(Boolean.TRUE::equals)
+                .orElse(false);
 
         //response
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String json = String.format
-                ("{\"accessToken\":\"%s\", \"refreshToken\":\"%s\"}",
-                        accessToken, refreshToken);
+        String json = String.format(
+                "{\"accessToken\":\"%s\", \"refreshToken\":\"%s\", \"termsAgreed\":%b}",
+                accessToken, refreshToken, termsAgreed);
         response.getWriter().write(json);
         response.getWriter().flush();
 
     }
-    }
+}
