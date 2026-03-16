@@ -4,6 +4,9 @@ import com.cdy.cdy.admin.dto.RequestChangePassword;
 import com.cdy.cdy.admin.dto.RequestPromoteAdmin;
 import com.cdy.cdy.admin.dto.ResponseUserList;
 import com.cdy.cdy.admin.service.AdminService;
+import com.cdy.cdy.domain.apply.dto.RequestApprove;
+import com.cdy.cdy.domain.apply.dto.ResponseApplication;
+import com.cdy.cdy.domain.apply.service.ApplicationService;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +25,7 @@ import java.util.List;
 public class AdminController {
 
     private final AdminService adminService;
+    private final ApplicationService applicationService;
 
     @Operation(summary = "어드민이 신규 유저 등록")
     @PostMapping("/createUser")
@@ -70,5 +74,29 @@ public class AdminController {
     public ResponseEntity<?> bootstrap(@RequestBody RequestPromoteAdmin dto) {
         adminService.promoteToAdmin(dto);
         return ResponseEntity.ok("ADMIN 권한이 부여됐습니다.");
+    }
+
+    @Operation(summary = "크루원 신청 목록 조회")
+    @GetMapping("/applications")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<java.util.List<ResponseApplication>> getApplications() {
+        return ResponseEntity.ok(applicationService.getApplications());
+    }
+
+    @Operation(summary = "크루원 신청 승인", description = "body: name, email, nickname, phone, password → users 테이블에 계정 생성")
+    @PostMapping("/applications/{id}/approve")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> approveApplication(@PathVariable Long id,
+                                                @RequestBody RequestApprove dto) {
+        applicationService.approve(id, dto);
+        return ResponseEntity.ok("승인됐습니다.");
+    }
+
+    @Operation(summary = "크루원 신청 거절")
+    @PostMapping("/applications/{id}/reject")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> rejectApplication(@PathVariable Long id) {
+        applicationService.reject(id);
+        return ResponseEntity.ok("거절됐습니다.");
     }
 }
