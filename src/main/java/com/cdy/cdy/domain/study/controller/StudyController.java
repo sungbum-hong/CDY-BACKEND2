@@ -77,6 +77,17 @@ public class StudyController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(summary = "특정 유저의 스터디 목록 조회 (공개)", description = """
+            userId로 해당 유저의 스터디 목록 조회 (비로그인 공개)
+            """)
+    @GetMapping("/findByUser/{userId}")
+    public ResponseEntity<?> findByUserId(@PathVariable("userId") Long userId,
+                                          @PageableDefault(page = 0, size = 1000, sort = "createdAt", direction = Sort.Direction.DESC
+                                          ) Pageable pageable) {
+        Page<ResponseStudyListByUser> result = studyService.findByUserId(userId, pageable);
+        return ResponseEntity.ok(result);
+    }
+
     @Operation(summary = "카테고리별 크루 멤버 목록 조회", description = """
             category 파라미터로 coding / design / video 중 하나를 전달하면
             해당 카테고리에 속한 크루 멤버 목록을 반환합니다. (비로그인 공개)

@@ -161,6 +161,20 @@ public class StudyService {
         return new PageImpl<>(studyListByUsers, pageable, totalCount);
     }
 
+    public Page<ResponseStudyListByUser> findByUserId(Long userId, Pageable pageable) {
+
+        List<ResponseStudyListByUser> studyListByUsers = studyRepositoryJDBC.findByUser(userId, pageable);
+
+        studyListByUsers.forEach(dto -> {
+            dto.setFirstImageUrl(imageUrlResolver.toPresignedUrl(dto.getFirstImageUrl()));
+            dto.setUserProfileImageUrl(imageUrlResolver.toPresignedUrl(dto.getUserProfileImageUrl()));
+        });
+
+        Long totalCount = studyRepository.findTotalCountByUserId(userId);
+
+        return new PageImpl<>(studyListByUsers, pageable, totalCount);
+    }
+
     // 카테고리별 크루 멤버 목록 조회 (비로그인 공개)
     public List<ResponseMember> getMembers(String category) {
         UserCategory userCategory = switch (category.toLowerCase()) {
