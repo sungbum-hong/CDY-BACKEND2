@@ -68,6 +68,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/v1/apply").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/study/members").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/study/findByUser/*").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/projects").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/projects/*").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/admin/bootstrap").permitAll()
                 .anyRequest().authenticated()
         );
