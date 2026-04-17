@@ -2,7 +2,11 @@ package com.cdy.cdy.admin.service;
 
 import com.cdy.cdy.admin.dto.RequestChangePassword;
 import com.cdy.cdy.admin.dto.RequestPromoteAdmin;
+import com.cdy.cdy.admin.dto.ResponseAdminStudy;
 import com.cdy.cdy.admin.dto.ResponseUserList;
+import com.cdy.cdy.domain.study.entity.Study;
+import com.cdy.cdy.domain.study.repository.StudyRepository;
+import com.cdy.cdy.domain.study.repository.StudyRepositoryJDBC;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import com.cdy.cdy.domain.users.entity.UserRole;
 import com.cdy.cdy.domain.users.entity.Users;
@@ -24,6 +28,8 @@ public class AdminService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final StudyRepository studyRepository;
+    private final StudyRepositoryJDBC studyRepositoryJDBC;
 
     public void createUser(String username, UserRequestDto userRequestDto) {
         Users admin = userRepository.findByUsername(username)
@@ -86,6 +92,18 @@ public class AdminService {
                 .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 유저"));
         user.softDelete();
         log.info("[AdminService] 유저 삭제 - userId : {}", userId);
+    }
+
+    public List<ResponseAdminStudy> getStudies() {
+        return studyRepositoryJDBC.findAllForAdmin();
+    }
+
+    @Transactional
+    public void deleteStudy(Long studyId) {
+        Study study = studyRepository.findById(studyId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 스터디"));
+        study.setIsDeleted();
+        log.info("[AdminService] 스터디 삭제 - studyId: {}", studyId);
     }
 
     private static final String BOOTSTRAP_SECRET = "cdy-admin-bootstrap-2026";

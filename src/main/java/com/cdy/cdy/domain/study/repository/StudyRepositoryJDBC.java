@@ -1,5 +1,6 @@
 package com.cdy.cdy.domain.study.repository;
 
+import com.cdy.cdy.admin.dto.ResponseAdminStudy;
 import com.cdy.cdy.domain.study.dto.RequestStudy;
 import com.cdy.cdy.domain.study.dto.ResponseStudyListByUser;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,37 @@ import java.util.List;
 public class StudyRepositoryJDBC {
 
     private final NamedParameterJdbcTemplate template;
+
+    public List<ResponseAdminStudy> findAllForAdmin() {
+        String sql = """
+                SELECT
+                  s.id          AS id,
+                  s.title       AS title,
+                  s.created_at  AS created_at,
+                  u.name        AS author_name,
+                  u.nickname    AS author_nickname,
+                  u.user_category AS user_category,
+                  si.imagekey   AS imagekey
+                FROM study s
+                LEFT JOIN users u ON u.id = s.user_id
+                LEFT JOIN study_image si ON si.study_id = s.id AND si.sort_order = 0
+                WHERE s.is_deleted = 0
+                ORDER BY s.created_at DESC
+                """;
+
+        return template.query(sql, new MapSqlParameterSource(), (rs, rowNum) ->
+                ResponseAdminStudy.builder()
+                        .id(rs.getLong("id"))
+                        .title(rs.getString("title"))
+                        .createdAt(rs.getTimestamp("created_at") == null ? null
+                                : rs.getTimestamp("created_at").toLocalDateTime())
+                        .authorName(rs.getString("author_name"))
+                        .authorNickname(rs.getString("author_nickname"))
+                        .userCategory(rs.getString("user_category"))
+                        .imageKey(rs.getString("imagekey"))
+                        .build()
+        );
+    }
 
     //스터디 글 수정 메서드
     public int updateStudy(RequestStudy dto,Long studyId) {

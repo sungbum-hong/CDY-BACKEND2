@@ -2,6 +2,7 @@ package com.cdy.cdy.admin.controller;
 
 import com.cdy.cdy.admin.dto.RequestChangePassword;
 import com.cdy.cdy.admin.dto.RequestPromoteAdmin;
+import com.cdy.cdy.admin.dto.ResponseAdminStudy;
 import com.cdy.cdy.admin.dto.ResponseUserList;
 import com.cdy.cdy.admin.service.AdminService;
 import com.cdy.cdy.domain.apply.dto.RequestApprove;
@@ -74,6 +75,21 @@ public class AdminController {
     public ResponseEntity<?> bootstrap(@RequestBody RequestPromoteAdmin dto) {
         adminService.promoteToAdmin(dto);
         return ResponseEntity.ok("ADMIN 권한이 부여됐습니다.");
+    }
+
+    @Operation(summary = "전체 스터디 목록 조회 (어드민)")
+    @GetMapping("/studies")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<ResponseAdminStudy>> getStudies() {
+        return ResponseEntity.ok(adminService.getStudies());
+    }
+
+    @Operation(summary = "스터디 삭제 (어드민, soft delete)")
+    @DeleteMapping("/studies/{studyId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> deleteStudy(@PathVariable Long studyId) {
+        adminService.deleteStudy(studyId);
+        return ResponseEntity.ok("스터디가 삭제됐습니다.");
     }
 
     @Operation(summary = "크루원 신청 목록 조회")
