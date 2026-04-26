@@ -14,5 +14,6 @@ public class ResponseContest {
     private String deadline;
     private String field;
     private String externalUrl;
+    private String imageUrl;
     private LocalDateTime createdAt;
 }

@@ -11,4 +11,5 @@ public class RequestContest {
     private String deadline;
     private String field;
     private String externalUrl;
+    private String imageUrl;
 }

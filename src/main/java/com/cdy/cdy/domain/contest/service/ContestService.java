@@ -27,6 +27,7 @@ public class ContestService {
                         .deadline(c.getDeadline())
                         .field(c.getField())
                         .externalUrl(c.getExternalUrl())
+                        .imageUrl(c.getImageUrl())
                         .createdAt(c.getCreatedAt())
                         .build())
                 .toList();
@@ -40,6 +41,7 @@ public class ContestService {
                 .deadline(dto.getDeadline())
                 .field(dto.getField())
                 .externalUrl(dto.getExternalUrl())
+                .imageUrl(dto.getImageUrl())
                 .build());
     }
 

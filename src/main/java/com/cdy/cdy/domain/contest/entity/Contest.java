@@ -31,6 +31,9 @@ public class Contest extends BaseEntity {
     @Column(name = "external_url", length = 1000)
     private String externalUrl;
 
+    @Column(name = "image_url", length = 1000)
+    private String imageUrl;
+
     @Builder.Default
     @Column(name = "is_deleted")
     private Boolean isDeleted = false;
