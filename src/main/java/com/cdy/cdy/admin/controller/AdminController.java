@@ -135,6 +135,14 @@ public class AdminController {
         return ResponseEntity.ok("공모전이 등록됐습니다.");
     }
 
+    @Operation(summary = "공모전 수정 (어드민)")
+    @PutMapping("/contests/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> updateContest(@PathVariable Long id, @RequestBody RequestContest dto) {
+        contestService.update(id, dto);
+        return ResponseEntity.ok("공모전이 수정됐습니다.");
+    }
+
     @Operation(summary = "공모전 삭제 (어드민, soft delete)")
     @DeleteMapping("/contests/{id}")
     @PreAuthorize("hasRole('ADMIN')")

@@ -48,6 +48,14 @@ public class ContestService {
     }
 
     @Transactional
+    public void update(Long id, RequestContest dto) {
+        Contest contest = contestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 공모전"));
+        contest.update(dto.getTitle(), dto.getOrganizer(), dto.getDeadline(),
+                dto.getField(), dto.getExternalUrl(), dto.getImageUrl());
+    }
+
+    @Transactional
     public void delete(Long id) {
         Contest contest = contestRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 공모전"));

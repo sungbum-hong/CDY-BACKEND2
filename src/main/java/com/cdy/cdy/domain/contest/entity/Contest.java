@@ -38,5 +38,14 @@ public class Contest extends BaseEntity {
     @Column(name = "is_deleted")
     private Boolean isDeleted = false;
 
+    public void update(String title, String organizer, String deadline, String field, String externalUrl, String imageUrl) {
+        this.title = title;
+        this.organizer = organizer;
+        this.deadline = deadline;
+        this.field = field;
+        this.externalUrl = externalUrl;
+        if (imageUrl != null) this.imageUrl = imageUrl;
+    }
+
     public void delete() { this.isDeleted = true; }
 }
