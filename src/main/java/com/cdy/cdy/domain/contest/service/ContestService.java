@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,7 +19,8 @@ public class ContestService {
     private final ContestRepository contestRepository;
 
     public List<ResponseContest> findAll() {
-        return contestRepository.findAllByIsDeletedFalseOrderByCreatedAtDesc()
+        String today = LocalDate.now().toString(); // "YYYY-MM-DD"
+        return contestRepository.findActiveContests(today)
                 .stream()
                 .map(c -> ResponseContest.builder()
                         .id(c.getId())
