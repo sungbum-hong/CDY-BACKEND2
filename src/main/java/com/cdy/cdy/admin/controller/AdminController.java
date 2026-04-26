@@ -8,6 +8,8 @@ import com.cdy.cdy.admin.service.AdminService;
 import com.cdy.cdy.domain.apply.dto.RequestApprove;
 import com.cdy.cdy.domain.apply.dto.ResponseApplication;
 import com.cdy.cdy.domain.apply.service.ApplicationService;
+import com.cdy.cdy.domain.contest.dto.RequestContest;
+import com.cdy.cdy.domain.contest.service.ContestService;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,7 @@ public class AdminController {
 
     private final AdminService adminService;
     private final ApplicationService applicationService;
+    private final ContestService contestService;
 
     @Operation(summary = "어드민이 신규 유저 등록")
     @PostMapping("/createUser")
@@ -122,5 +125,21 @@ public class AdminController {
     public ResponseEntity<?> deleteApplication(@PathVariable Long id) {
         applicationService.delete(id);
         return ResponseEntity.ok("삭제됐습니다.");
+    }
+
+    @Operation(summary = "공모전 등록 (어드민)")
+    @PostMapping("/contests")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> createContest(@RequestBody RequestContest dto) {
+        contestService.create(dto);
+        return ResponseEntity.ok("공모전이 등록됐습니다.");
+    }
+
+    @Operation(summary = "공모전 삭제 (어드민, soft delete)")
+    @DeleteMapping("/contests/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> deleteContest(@PathVariable Long id) {
+        contestService.delete(id);
+        return ResponseEntity.ok("공모전이 삭제됐습니다.");
     }
 }
