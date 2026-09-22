@@ -6,6 +6,7 @@ import com.cdy.cdy.security.jwt.JWTFilter;
 import com.cdy.cdy.security.jwt.JwtService;
 import com.cdy.cdy.security.jwt.JwtUtil;
 import com.cdy.cdy.security.jwt.LoginFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -14,6 +15,7 @@ import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,9 +27,12 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @EnableWebSecurity
+@EnableMethodSecurity   // 이게 없으면 @PreAuthorize 가 무시된다
 @Component
 @RequiredArgsConstructor
 public class SecurityConfig {
@@ -75,10 +80,30 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/v1/contests").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/partners").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/admin/bootstrap").permitAll()
+                // 크루 전용 혜택몰 - 로그인 필수
+                .requestMatchers("/api/v1/benefits/**").authenticated()
+                // 어드민 API - ADMIN 권한 필수 (@PreAuthorize 와 이중 방어)
+                .requestMatchers("/api/v1/admin/**").hasRole(UserRole.ADMIN.name())
                 .anyRequest().authenticated()
         );
 
+        // 미인증은 401, 인증됐지만 권한 부족은 403으로 구분한다.
+        // (프론트 axios 인터셉터가 401을 토큰 재발급 신호로 사용)
+        http.exceptionHandling(ex -> ex
+                .authenticationEntryPoint((req, res, e) -> writeError(res, 401, "로그인이 필요합니다."))
+                .accessDeniedHandler((req, res, e) -> writeError(res, 403, "접근 권한이 없습니다."))
+        );
+
         return http.build();
+    }
+
+    /** GlobalExceptionHandler의 ErrorResponse와 동일한 형태로 내려준다. */
+    private static void writeError(HttpServletResponse response, int status, String message) throws IOException {
+        response.setStatus(status);
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(
+                "{\"status\":%d,\"messages\":\"%s\",\"timestamp\":\"%s\"}"
+                        .formatted(status, message, LocalDateTime.now()));
     }
 
     @Bean

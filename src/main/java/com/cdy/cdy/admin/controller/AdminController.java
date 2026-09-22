@@ -8,9 +8,14 @@ import com.cdy.cdy.admin.service.AdminService;
 import com.cdy.cdy.domain.apply.dto.RequestApprove;
 import com.cdy.cdy.domain.apply.dto.ResponseApplication;
 import com.cdy.cdy.domain.apply.service.ApplicationService;
+import com.cdy.cdy.domain.benefit.dto.RequestBenefit;
+import com.cdy.cdy.domain.benefit.dto.ResponseAdminBenefit;
+import com.cdy.cdy.domain.benefit.dto.ResponseBenefitStats;
+import com.cdy.cdy.domain.benefit.service.BenefitService;
 import com.cdy.cdy.domain.contest.dto.RequestContest;
 import com.cdy.cdy.domain.contest.service.ContestService;
 import com.cdy.cdy.domain.partner.dto.RequestPartner;
+import com.cdy.cdy.domain.partner.dto.ResponseAdminPartner;
 import com.cdy.cdy.domain.partner.service.PartnerService;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,6 +38,7 @@ public class AdminController {
     private final ApplicationService applicationService;
     private final ContestService contestService;
     private final PartnerService partnerService;
+    private final BenefitService benefitService;
 
     @Operation(summary = "어드민이 신규 유저 등록")
     @PostMapping("/createUser")
@@ -162,11 +168,64 @@ public class AdminController {
         return ResponseEntity.ok("파트너가 등록됐습니다.");
     }
 
+    @Operation(summary = "파트너 수정 (어드민)")
+    @PutMapping("/partners/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> updatePartner(@PathVariable Long id, @RequestBody RequestPartner dto) {
+        partnerService.update(id, dto);
+        return ResponseEntity.ok("파트너가 수정됐습니다.");
+    }
+
+    @Operation(summary = "파트너 전체 목록 조회 (어드민)", description = "HIDDEN 포함")
+    @GetMapping("/partners")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<ResponseAdminPartner>> getPartners() {
+        return ResponseEntity.ok(partnerService.findAllForAdmin());
+    }
+
     @Operation(summary = "파트너 삭제 (어드민)")
     @DeleteMapping("/partners/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deletePartner(@PathVariable Long id) {
         partnerService.delete(id);
         return ResponseEntity.ok("파트너가 삭제됐습니다.");
+    }
+
+    @Operation(summary = "혜택 등록 (어드민)")
+    @PostMapping("/benefits")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> createBenefit(@RequestBody RequestBenefit dto) {
+        benefitService.create(dto);
+        return ResponseEntity.ok("혜택이 등록됐습니다.");
+    }
+
+    @Operation(summary = "혜택 전체 목록 조회 (어드민)", description = "HIDDEN·기간만료 포함")
+    @GetMapping("/benefits")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<ResponseAdminBenefit>> getBenefits() {
+        return ResponseEntity.ok(benefitService.findAllForAdmin());
+    }
+
+    @Operation(summary = "혜택 수정 (어드민)")
+    @PutMapping("/benefits/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> updateBenefit(@PathVariable Long id, @RequestBody RequestBenefit dto) {
+        benefitService.update(id, dto);
+        return ResponseEntity.ok("혜택이 수정됐습니다.");
+    }
+
+    @Operation(summary = "혜택 삭제 (어드민, soft delete)", description = "status를 HIDDEN으로 변경")
+    @DeleteMapping("/benefits/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> deleteBenefit(@PathVariable Long id) {
+        benefitService.delete(id);
+        return ResponseEntity.ok("혜택이 삭제됐습니다.");
+    }
+
+    @Operation(summary = "혜택별 발급 통계 (어드민)")
+    @GetMapping("/benefits/stats")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<ResponseBenefitStats>> getBenefitStats() {
+        return ResponseEntity.ok(benefitService.getStats());
     }
 }

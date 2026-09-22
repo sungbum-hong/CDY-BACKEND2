@@ -59,7 +59,7 @@ public class JWTFilter extends OncePerRequestFilter {
             String role = jwtUtil.getRole(accessToken);
 
             List<GrantedAuthority> authorities = Collections.singletonList
-                    (new SimpleGrantedAuthority("ROLE_" + role));
+                    (new SimpleGrantedAuthority(toAuthority(role)));
 
             Authentication auth = new UsernamePasswordAuthenticationToken(username, null, authorities);
             SecurityContextHolder.getContext().setAuthentication(auth);
@@ -73,6 +73,18 @@ public class JWTFilter extends OncePerRequestFilter {
             return;
         }
 
+    }
+
+    /**
+     * JWT의 role 클레임을 Spring Security 권한 문자열로 변환한다.
+     * LoginSuccessHandler가 getAuthority() 결과("ROLE_ADMIN")를 그대로 클레임에 담기 때문에
+     * 접두사를 무조건 붙이면 "ROLE_ROLE_ADMIN"이 되어 hasRole('ADMIN')이 실패한다.
+     * 이미 발급된 토큰과 순수 enum 이름("ADMIN") 둘 다 처리한다.
+     */
+    private String toAuthority(String role) {
+        if (role == null || role.isBlank()) return "ROLE_USER";
+        String normalized = role.trim().toUpperCase();
+        return normalized.startsWith("ROLE_") ? normalized : "ROLE_" + normalized;
     }
 
 }
