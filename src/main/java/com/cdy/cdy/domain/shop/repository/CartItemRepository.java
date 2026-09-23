@@ -26,4 +26,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     long countByUserId(Long userId);
 
     void deleteByUserIdAndProductIdIn(Long userId, List<Long> productIds);
+
+    /** 상품 하드 삭제 전 FK 정리용 — 누군가 장바구니에 담아둔 상태여도 지울 수 있어야 한다 */
+    void deleteByProductId(Long productId);
 }

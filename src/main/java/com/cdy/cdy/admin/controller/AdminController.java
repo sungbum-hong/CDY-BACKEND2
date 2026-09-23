@@ -262,7 +262,9 @@ public class AdminController {
         return ResponseEntity.ok("상품이 수정됐습니다.");
     }
 
-    @Operation(summary = "상품 삭제 (어드민, soft delete)", description = "status를 HIDDEN으로 변경")
+    @Operation(summary = "상품 삭제 (어드민)",
+            description = "실제로 삭제한다. 장바구니에 담긴 건 같이 정리되고, 상세 이미지도 함께 삭제된다. "
+                    + "주문 이력이 있는 상품은 400 — 이 경우 수정에서 상태를 HIDDEN 으로 바꿔 숨긴다.")
     @DeleteMapping("/shop/products/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {

@@ -9,6 +9,8 @@ import com.cdy.cdy.domain.shop.dto.ProductDtos;
 import com.cdy.cdy.domain.shop.entity.Product;
 import com.cdy.cdy.domain.shop.entity.ProductImage;
 import com.cdy.cdy.domain.shop.entity.ProductStatus;
+import com.cdy.cdy.domain.shop.repository.CartItemRepository;
+import com.cdy.cdy.domain.shop.repository.OrderItemRepository;
 import com.cdy.cdy.domain.shop.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,8 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final PartnerRepository partnerRepository;
+    private final CartItemRepository cartItemRepository;
+    private final OrderItemRepository orderItemRepository;
     private final ImageUrlResolver imageUrlResolver;
 
     // ================= 크루용 =================
@@ -170,12 +174,29 @@ public class ProductService {
         if (dto.imageKeys() != null) p.replaceImages(dto.imageKeys());
     }
 
-    /** 소프트 삭제 (status = HIDDEN) */
+    /**
+     * 하드 삭제. 단 주문된 적 있는 상품은 지우지 않는다 —
+     * shop_order_items 가 product_id FK 를 들고 있어서 지우면 주문 내역이 깨진다.
+     * 그 경우는 숨김(PUT 으로 status=HIDDEN)을 쓰라고 안내한다.
+     *
+     * 장바구니는 주문 이력이 아니라 임시 상태라 그냥 비우고 진행한다.
+     * 상세 이미지(product_images)는 Product.images 의 cascade=ALL + orphanRemoval 로 같이 지워진다.
+     */
     @Transactional
     public void delete(Long id) {
+
         Product p = productRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 상품"));
-        p.hide();
+
+        if (orderItemRepository.existsByProductId(id)) {
+            throw new IllegalArgumentException("주문 이력이 있는 상품은 삭제할 수 없어요. 숨김 처리를 사용해주세요.");
+        }
+
+        // 상품보다 먼저 지워야 FK 제약에 걸리지 않는다. flush 로 순서를 확정한다.
+        cartItemRepository.deleteByProductId(id);
+        cartItemRepository.flush();
+
+        productRepository.delete(p);
     }
 
     /**
