@@ -8,6 +8,7 @@ import com.cdy.cdy.domain.partner.dto.ResponsePartner;
 import com.cdy.cdy.domain.partner.entity.Partner;
 import com.cdy.cdy.domain.partner.entity.PartnerStatus;
 import com.cdy.cdy.domain.partner.repository.PartnerRepository;
+import com.cdy.cdy.domain.shop.repository.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class PartnerService {
 
     private final PartnerRepository partnerRepository;
     private final BenefitRepository benefitRepository;
+    private final ProductRepository productRepository;
     private final ImageUrlResolver imageUrlResolver;
 
     public List<ResponsePartner> findAll() {
@@ -94,9 +96,12 @@ public class PartnerService {
         Partner partner = partnerRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 파트너"));
 
-        // 혜택이 달려 있으면 FK 제약으로 실패하므로 미리 막는다.
+        // 혜택/상품이 달려 있으면 FK 제약으로 실패하므로 미리 막는다.
         if (benefitRepository.existsByPartnerId(id)) {
             throw new IllegalStateException("등록된 혜택이 있는 파트너는 삭제할 수 없습니다. 혜택을 먼저 삭제하거나 파트너를 HIDDEN 처리하세요.");
+        }
+        if (productRepository.existsByPartnerId(id)) {
+            throw new IllegalStateException("등록된 상품이 있는 파트너는 삭제할 수 없습니다. 상품을 먼저 삭제하거나 파트너를 HIDDEN 처리하세요.");
         }
 
         partnerRepository.delete(partner);

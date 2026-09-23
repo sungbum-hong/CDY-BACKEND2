@@ -33,6 +33,9 @@ jwt:
   secret: ${JWT_SECRET}
   accessTokenExpiresIn: 3600000
   refreshTokenExpiresIn: 604800000
+toss:
+  # 쇼핑몰 결제 승인용 시크릿 키. 프론트로 절대 내보내지 않는다.
+  secretKey: ${TOSS_SECRET_KEY:}
 storage:
   provider: r2
   bucket: cdy
