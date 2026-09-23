@@ -47,6 +47,8 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace
 
+toss:
+  secretKey: ${TOSS_SECRET_KEY:}
 storage:
   provider: r2
   bucket: localhub

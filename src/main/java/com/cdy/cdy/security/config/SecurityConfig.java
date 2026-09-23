@@ -80,8 +80,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/v1/contests").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/partners").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/admin/bootstrap").permitAll()
-                // 크루 전용 혜택몰 - 로그인 필수
+                // 크루 전용 혜택몰 / 쇼핑몰 - 로그인 필수
                 .requestMatchers("/api/v1/benefits/**").authenticated()
+                .requestMatchers("/api/v1/shop/**").authenticated()
                 // 어드민 API - ADMIN 권한 필수 (@PreAuthorize 와 이중 방어)
                 .requestMatchers("/api/v1/admin/**").hasRole(UserRole.ADMIN.name())
                 .anyRequest().authenticated()

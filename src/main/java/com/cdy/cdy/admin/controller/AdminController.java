@@ -17,6 +17,11 @@ import com.cdy.cdy.domain.contest.service.ContestService;
 import com.cdy.cdy.domain.partner.dto.RequestPartner;
 import com.cdy.cdy.domain.partner.dto.ResponseAdminPartner;
 import com.cdy.cdy.domain.partner.service.PartnerService;
+import com.cdy.cdy.domain.shop.dto.OrderDtos;
+import com.cdy.cdy.domain.shop.dto.ProductDtos;
+import com.cdy.cdy.domain.shop.entity.OrderStatus;
+import com.cdy.cdy.domain.shop.service.OrderService;
+import com.cdy.cdy.domain.shop.service.ProductService;
 import com.cdy.cdy.domain.users.dto.UserRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +44,8 @@ public class AdminController {
     private final ContestService contestService;
     private final PartnerService partnerService;
     private final BenefitService benefitService;
+    private final ProductService productService;
+    private final OrderService orderService;
 
     @Operation(summary = "어드민이 신규 유저 등록")
     @PostMapping("/createUser")
@@ -227,5 +234,76 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<ResponseBenefitStats>> getBenefitStats() {
         return ResponseEntity.ok(benefitService.getStats());
+    }
+
+    // ================= 쇼핑몰 — 상품 =================
+
+    @Operation(summary = "상품 전체 목록 (어드민)", description = "HIDDEN 포함")
+    @GetMapping("/shop/products")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<ProductDtos.AdminItem>> getProducts() {
+        return ResponseEntity.ok(productService.findAllForAdmin());
+    }
+
+    @Operation(summary = "상품 등록 (어드민)",
+            description = "partnerId 필수. 없는 업체이거나 HIDDEN 업체면 400")
+    @PostMapping("/shop/products")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> createProduct(@RequestBody ProductDtos.Request dto) {
+        productService.create(dto);
+        return ResponseEntity.ok("상품이 등록됐습니다.");
+    }
+
+    @Operation(summary = "상품 수정 (어드민)")
+    @PutMapping("/shop/products/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductDtos.Request dto) {
+        productService.update(id, dto);
+        return ResponseEntity.ok("상품이 수정됐습니다.");
+    }
+
+    @Operation(summary = "상품 삭제 (어드민, soft delete)", description = "status를 HIDDEN으로 변경")
+    @DeleteMapping("/shop/products/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        productService.delete(id);
+        return ResponseEntity.ok("상품이 삭제됐습니다.");
+    }
+
+    @Operation(summary = "상품 일괄 등록 (어드민)",
+            description = "상품 객체 JSON 배열을 그대로 보낸다. 각 건에 partnerId 필수. 실패 건은 errors 배열로 반환")
+    @PostMapping("/shop/products/bulk")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<ProductDtos.BulkResult> createProductsBulk(@RequestBody List<ProductDtos.Request> dtos) {
+        return ResponseEntity.ok(productService.createBulk(dtos));
+    }
+
+    // ================= 쇼핑몰 — 주문 =================
+
+    @Operation(summary = "주문 목록 (어드민)", description = "status 미지정 시 전체")
+    @GetMapping("/shop/orders")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<OrderDtos.AdminItem>> getOrders(
+            @RequestParam(name = "status", required = false) String status) {
+
+        OrderStatus parsed = null;
+        if (status != null && !status.isBlank()) {
+            try {
+                parsed = OrderStatus.valueOf(status.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException(
+                        "status는 PENDING, PAID, PREPARING, SHIPPING, DELIVERED, CANCELLED 중 하나여야 합니다.");
+            }
+        }
+        return ResponseEntity.ok(orderService.findAllForAdmin(parsed));
+    }
+
+    @Operation(summary = "주문 상태 변경 (어드민)", description = "PREPARING / SHIPPING / DELIVERED")
+    @PutMapping("/shop/orders/{id}/status")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> changeOrderStatus(@PathVariable Long id,
+                                               @RequestBody OrderDtos.StatusRequest dto) {
+        orderService.changeStatus(id, dto);
+        return ResponseEntity.ok("주문 상태가 변경됐습니다.");
     }
 }
